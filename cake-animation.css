@@ -1,0 +1,203 @@
+#birthdayCakeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 20px;
+    margin: 40px auto;
+    perspective: 1000px;
+}
+
+.cake {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Cake tiers */
+.tier {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.bottom-tier {
+    width: 200px;
+    height: 80px;
+    animation: appearCake 0.8s 0.5s forwards;
+}
+
+.middle-tier {
+    width: 150px;
+    height: 60px;
+    animation: appearCake 0.8s 1.3s forwards;
+}
+
+.top-tier {
+    width: 100px;
+    height: 40px;
+    animation: appearCake 0.8s 2.1s forwards;
+}
+
+/* Cake base (purple part) */
+.cake-base {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #9c27b0, #7b1fa2);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Frosting (white part) */
+.frosting {
+    position: absolute;
+    top: -10px;
+    width: 110%;
+    height: 20px;
+    background: linear-gradient(to bottom, #fff, #f3e5f5);
+    border-radius: 50% 50% 10px 10px;
+    z-index: 2;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Candles container */
+.candles-container {
+    position: absolute;
+    top: -40px;
+    display: flex;
+    justify-content: space-around;
+    width: 140px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: appearCandles 0.8s 3s forwards;
+}
+
+/* Individual candle */
+.candle {
+    position: relative;
+    width: 20px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candle-wax {
+    width: 12px;
+    height: 40px;
+    background: linear-gradient(to bottom, #ff4081, #f50057);
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Candle flames */
+.candle-flame {
+    width: 14px;
+    height: 20px;
+    background: linear-gradient(to bottom, #ffeb3b, #ff9800);
+    border-radius: 50% 50% 20% 20%;
+    position: relative;
+    margin-bottom: 5px;
+    opacity: 0;
+    transform: scale(0);
+    animation: flicker 1.5s infinite alternate, appearFlame 0.5s 3.5s forwards;
+    filter: blur(0.5px);
+}
+
+/* Flame glow effect */
+.candle-flame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    border-radius: inherit;
+}
+
+/* Play button */
+.play-btn {
+    margin-top: 50px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+}
+
+.play-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(156, 39, 176, 0.4);
+    background: linear-gradient(135deg, #ab47bc, #8e24aa);
+}
+
+/* Animations */
+@keyframes appearCake {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appearCandles {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appearFlame {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes flicker {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        transform: scale(1.05, 0.95) translateY(-1px);
+    }
+}
+
+/* Staggered flame appearance */
+.candles-container .candle:nth-child(1) .candle-flame {
+    animation-delay: 3.5s;
+}
+.candles-container .candle:nth-child(2) .candle-flame {
+    animation-delay: 3.7s;
+}
+.candles-container .candle:nth-child(3) .candle-flame {
+    animation-delay: 3.9s;
+}
+.candles-container .candle:nth-child(4) .candle-flame {
+    animation-delay: 4.1s;
+}

@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cake-animation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -210,6 +211,50 @@
             </div>
         </div>
 
+        <div id="birthdayCakeContainer">
+            <!-- Cake structure -->
+            <div class="cake">
+                <!-- Top tier -->
+                <div class="tier top-tier">
+                    <div class="frosting"></div>
+                    <div class="cake-base"></div>
+                </div>
+
+                <!-- Middle tier -->
+                <div class="tier middle-tier">
+                    <div class="frosting"></div>
+                    <div class="cake-base"></div>
+                </div>
+
+                <!-- Bottom tier -->
+                <div class="tier bottom-tier">
+                    <div class="frosting"></div>
+                    <div class="cake-base"></div>
+                </div>
+
+                <!-- Candles container -->
+                <div class="candles-container">
+                    <div class="candle">
+                        <div class="candle-flame"></div>
+                        <div class="candle-wax"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="candle-flame"></div>
+                        <div class="candle-wax"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="candle-flame"></div>
+                        <div class="candle-wax"></div>
+                    </div>
+                </div>
+
+                <!-- Control button -->
+                <button id="playAnimation" class="play-btn">
+                    🎂 Make Birthday Cake
+                </button>
+            </div>
+        </div>
+
         <footer>
             <p>Made with <i class="fas fa-heart" style="color:#ff4d6d"></i> for the most amazing girl in
                 the
@@ -284,6 +329,7 @@
             messageElement.textContent = `"${messages[messageIndex]}"`;
         }, 10000);
     </script>
+    <script src="cake-animation.js"></script>
 </body>
 
 </html>
